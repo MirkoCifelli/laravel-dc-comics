@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// Controllers
+use App\Http\Controllers\Admin\ComicController;
+use App\Models\Comic;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+/* CRUD Comic */
+Route::resource('comics', ComicController::class);

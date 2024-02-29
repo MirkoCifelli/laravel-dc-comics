@@ -51,7 +51,7 @@
 
                     <div class="mb-3">
                         <label for="sale_date" class="form-label">Sale Date (aaaa-mm-gg)</label>
-                        <input type="text" class="form-control" id="series" name="series"
+                        <input type="text" class="form-control" id="sale_date" name="sale_date"
                             placeholder="Inserisci la serie..." maxlength="64" required>
                     </div>
 
@@ -63,13 +63,13 @@
 
                     <div class="mb-3">
                         <label for="artist" class="form-label">Artist</label>
-                        <input type="text" class="form-control" id="artist" name="artist"
+                        <input type="text" class="form-control" id="artists" name="artists"
                             placeholder="Inserisci gli artisti..." maxlength="1024">
                     </div>
 
                     <div class="mb-3">
                         <label for="writers" class="form-label">Writers</label>
-                        <input type="text" class="form-control" id="Writers" name="Writers"
+                        <input type="text" class="form-control" id="writers" name="writers"
                             placeholder="Inserisci gli Writers..." maxlength="1024">
                     </div>
 

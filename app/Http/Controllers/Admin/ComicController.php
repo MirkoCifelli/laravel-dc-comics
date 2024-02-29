@@ -43,9 +43,9 @@ class ComicController extends Controller
         $comic->thumb = $comicData['thumb'];
         $comic->price = $comicData['price'];
         $comic->series = $comicData['series'];
-        $comic->sale_date= $comicData['sale_date'];
+        $comic->sale_date = '2024-02-29';//$comicData['sale_date'];
         $comic->type = $comicData['type'];
-        $comic->artist= $comicData['artists'];
+        $comic->artists= $comicData['artists'];
         $comic->writers= $comicData['writers'];
         
         $comic->save();

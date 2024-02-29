@@ -17,11 +17,11 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('thumb', 1024)->nullable();
             $table->string('price');
-            $table->string('series', 16);
+            $table->string('series', 64);
             $table->date('sale_date');
             $table->string('type', 16)->nullable();
-            $table->string('artists', 64)->nullable();
-            $table->string('writers', 64)->nullable();
+            $table->text('artists')->nullable();
+            $table->text('writers')->nullable();
             $table->timestamps();
 
         });

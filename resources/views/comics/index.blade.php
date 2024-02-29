@@ -43,7 +43,7 @@
                                 <td>{{ $comic->sale_date }}</td>
                                 <td>{{ $comic->type }}</td>
                                 <td>{{ $comic->artists }}</td>
-                                <td>{{ $comic->writers }}g</td>
+                                <td>{{ $comic->writers }}</td>
                                 <td>
                                     <a href="{{ route('comics.show', ['comic' => $comic->id]) }}" class="btn btn-primary">
                                         Vedi

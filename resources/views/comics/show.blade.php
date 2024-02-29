@@ -38,6 +38,12 @@
                         <li>
                             Tipo : {{ $comic->type }}
                         </li>
+                        <li>
+                            Artists : {{ $comic->artists }}
+                        </li>
+                        <li>
+                            Writers : {{ $comic->writers }}
+                        </li>
                     </ul>
                 </div>
             </div>

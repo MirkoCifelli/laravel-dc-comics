@@ -52,7 +52,7 @@
                     <div class="mb-3">
                         <label for="sale_date" class="form-label">Sale Date (aaaa-mm-gg)</label>
                         <input type="text" class="form-control" id="sale_date" name="sale_date"
-                            placeholder="Inserisci la serie..." maxlength="64" required>
+                            placeholder="Inserisci la serie..." maxlength="64">
                     </div>
 
                     <div class="mb-3">

@@ -53,7 +53,7 @@
                                         class="btn btn-warning my-2">
                                         Modifica
                                     </a>
-                                    <form onsubmit="return confirm('Sei sicuro di voler eliminare questo elemento)"
+                                    <form onsubmit="return confirm('Sei sicuro di voler eliminare questo elemento');"
                                         class="my-2" action="{{ route('comics.destroy', ['comic' => $comic->id]) }}"
                                         method="POST">
                                         @csrf

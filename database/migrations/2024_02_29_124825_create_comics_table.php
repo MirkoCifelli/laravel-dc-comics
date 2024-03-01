@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('thumb', 1024)->nullable();
             $table->string('price');
             $table->string('series', 64);
-            $table->date('sale_date');
+            $table->date('sale_date')->nullable();
             $table->string('type', 16)->nullable();
             $table->text('artists')->nullable();
             $table->text('writers')->nullable();

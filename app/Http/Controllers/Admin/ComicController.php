@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 //Models
 use App\Models\Comic;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
 class ComicController extends Controller
 {
@@ -35,20 +36,21 @@ class ComicController extends Controller
     {
         $comicData = $request->all();
 
+        $comic =Comic::create($comicData);
         // TODO: valido i dati, ma lo faremo in futuro
 
-        $comic = new Comic();
-        $comic->title = $comicData['title'];
-        $comic->description = $comicData['description'];
-        $comic->thumb = $comicData['thumb'];
-        $comic->price = $comicData['price'];
-        $comic->series = $comicData['series'];
-        $comic->sale_date = '2024-02-29';//$comicData['sale_date'];
-        $comic->type = $comicData['type'];
-        $comic->artists= $comicData['artists'];
-        $comic->writers= $comicData['writers'];
+        // $comic = new Comic();
+        // $comic->title = $comicData['title'];
+        // $comic->description = $comicData['description'];
+        // $comic->thumb = $comicData['thumb'];
+        // $comic->price = $comicData['price'];
+        // $comic->series = $comicData['series'];
+        // $comic->sale_date = $comicData['sale_date'];
+        // $comic->type = $comicData['type'];
+        // $comic->artists= $comicData['artists'];
+        // $comic->writers= $comicData['writers'];
         
-        $comic->save();
+        // $comic->save();
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
@@ -64,24 +66,30 @@ class ComicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('comics.edit', compact('comic'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $comicData = $request->all();
+
+        $comic->update($comicData);
+
+        return redirect()->route('comics.show', ['comic'=> $comic->id]);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }

@@ -27,8 +27,8 @@
                             <th scope="col">Series</th>
                             <th scope="col">SaleDate</th>
                             <th scope="col">Type</th>
-                            <th scope="col">Artist</th>
-                            <th scope="col">Writers</th>
+                            {{-- <th scope="col">Artist</th> --}}
+                            {{-- <th scope="col">Writers</th> --}}
                         </tr>
                     </thead>
                     <tbody>
@@ -42,12 +42,27 @@
                                 <td>{{ $comic->series }}</td>
                                 <td>{{ $comic->sale_date }}</td>
                                 <td>{{ $comic->type }}</td>
-                                <td>{{ $comic->artists }}</td>
-                                <td>{{ $comic->writers }}</td>
+                                {{-- <td>{{ $comic->artists }}</td> --}}
+                                {{-- <td>{{ $comic->writers }}</td> --}}
                                 <td>
-                                    <a href="{{ route('comics.show', ['comic' => $comic->id]) }}" class="btn btn-primary">
+                                    <a href="{{ route('comics.show', ['comic' => $comic->id]) }}"
+                                        class="btn btn-primary my-2">
                                         Vedi
                                     </a>
+                                    <a href="{{ route('comics.edit', ['comic' => $comic->id]) }}"
+                                        class="btn btn-warning my-2">
+                                        Modifica
+                                    </a>
+                                    <form onsubmit="return confirm('Sei sicuro di voler eliminare questo elemento)"
+                                        class="my-2" action="{{ route('comics.destroy', ['comic' => $comic->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            Elimina
+                                        </button>
+
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

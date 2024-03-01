@@ -39,10 +39,24 @@
                             Tipo : {{ $comic->type }}
                         </li>
                         <li>
-                            Artists : {{ $comic->artists }}
+                            Artists:
+                            <ul>
+                                @foreach (explode('|', $comic->artists) as $artist)
+                                    <li>
+                                        {{ $artist }}
+                                    </li>
+                                @endforeach
+                            </ul>
                         </li>
                         <li>
-                            Writers : {{ $comic->writers }}
+                            Writers :
+                            <ul>
+                                @foreach (explode('|', $comic->writers) as $writer)
+                                    <li>
+                                        {{ $writer }}
+                                    </li>  
+                                @endforeach
+                            </ul>
                         </li>
                     </ul>
                 </div>

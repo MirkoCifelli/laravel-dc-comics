@@ -16,6 +16,16 @@
                     </a>
                 </div>
 
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <form action="{{ route('comics.show', ['comic' => $comic->id]) }}" method="POST">
 
                     @csrf
@@ -25,7 +35,7 @@
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo <span class="text-danger">*</span></label>
                         <input 
-                        value="{{ $comic->title }}"
+                        value="{{ old('title', $comic->title) }}"
                         type="text" class="form-control"         
                         id="title" name="title"
                         placeholder="Inserisci il titolo..." maxlength="64" required>
@@ -34,13 +44,13 @@
                     <div class="mb-3">
                         <label for="description" class="form-label">Descrizione</label>
                         <textarea class="form-control" id="description" name="description" rows="3"
-                        placeholder="Inserisci la descrizione...">{{ $comic->description }}</textarea>
+                        placeholder="Inserisci la descrizione...">{{ old('description', $comic->description) }}</textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="thumb" class="form-label">Thumb</label>
                         <input 
-                        value="{{ $comic->thumb }}"
+                        value="{{ old('thumb', $comic->thumb) }}"
                         type="text" class="form-control" id="thumb" name="thumb"
                         placeholder="Inserisci la Thumb..." maxlength="1024">
                     </div>
@@ -48,7 +58,7 @@
                     <div class="mb-3">
                         <label for="price" class="form-label">Price ($x.x)<span class="text-danger">*</span> </label>
                         <input 
-                        value="{{ $comic->price }}"
+                        value="{{ old('price', $comic->price) }}"
                         type="text" class="form-control" id="price" name="price"
                         placeholder="Inserisci il prezzo..." maxlength="1024">
                     </div>
@@ -56,7 +66,7 @@
                     <div class="mb-3">
                         <label for="series" class="form-label">Series<span class="text-danger">*</span></label>
                         <input 
-                        value="{{ $comic->series }}"
+                        value="{{ old('series', $comic->series) }}"
                         type="text" class="form-control" id="series" name="series"
                         placeholder="Inserisci la serie..." maxlength="64" required>
                     </div>
@@ -64,7 +74,7 @@
                     <div class="mb-3">
                         <label for="sale_date" class="form-label">Sale Date (aaaa-mm-gg)</label>
                         <input 
-                        value="{{ $comic->sale_data }}"
+                        value="{{ old('sale_data', $comic->sale_data) }}"
                         type="text" class="form-control" id="sale_date" name="sale_date"
                         placeholder="Inserisci la serie..." maxlength="64" required>
                     </div>
@@ -72,7 +82,7 @@
                     <div class="mb-3">
                         <label for="type" class="form-label">Tipo</label>
                         <input 
-                        value="{{ $comic->type }}"
+                        value=" {{ old('type', $comic->type) }}"
                         type="text" class="form-control" id="type" name="type"
                         placeholder="Inserisci il tipo..." maxlength="16">
                     </div>
@@ -80,7 +90,7 @@
                     <div class="mb-3">
                         <label for="artist" class="form-label">Artist</label>
                         <input
-                        value="{{ $comic->artists }}" 
+                        value="{{ old('artist', $comic->artists) }}" 
                         type="text" class="form-control" id="artists" name="artists"
                         placeholder="Inserisci gli artisti..." maxlength="1024">
                     </div>
@@ -88,7 +98,7 @@
                     <div class="mb-3">
                         <label for="writers" class="form-label">Writers</label>
                         <input 
-                        value="{{ $comic->writers }}"
+                        value="{{ old('writers', $comic->writers) }}"
                         type="text" class="form-control" id="writers" name="writers"
                         placeholder="Inserisci gli Writers..." maxlength="1024">
                     </div>

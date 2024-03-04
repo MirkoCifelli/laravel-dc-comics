@@ -34,23 +34,29 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $comicData = $request->all();
+        $validationData = $request->validate([
+                'title' => 'required|max:64',
+                'description' => 'nullable|max:4000',
+                'thumb' => 'nullable|max:1024|url',
+                'price' => 'required',
+                'series' => 'required|max:64',
+                'sale_date' => 'nullable|date',
+                'type' => 'nullable|max:16|in:comic book,graphic novel',
+                'artists' => 'nullable',
+                'writers' => 'nullable'
+            ],
+            [
+                'title.required' => 'Dato necessario per continuare',
+                'price.required' => 'Dato necessario per continuare',
+                'series.required' => 'Dato necessario per continuare'
+            ]
 
-        $comic =Comic::create($comicData);
-        // TODO: valido i dati, ma lo faremo in futuro
+        );
+        // @dd($validationData);
+        // $comicData = $request->all();
 
-        // $comic = new Comic();
-        // $comic->title = $comicData['title'];
-        // $comic->description = $comicData['description'];
-        // $comic->thumb = $comicData['thumb'];
-        // $comic->price = $comicData['price'];
-        // $comic->series = $comicData['series'];
-        // $comic->sale_date = $comicData['sale_date'];
-        // $comic->type = $comicData['type'];
-        // $comic->artists= $comicData['artists'];
-        // $comic->writers= $comicData['writers'];
-        
-        // $comic->save();
+        $comic = Comic::create($validationData);
+
 
         return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
@@ -76,11 +82,12 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
+        
         $comicData = $request->all();
 
         $comic->update($comicData);
 
-        return redirect()->route('comics.show', ['comic'=> $comic->id]);
+        return redirect()->route('comics.show', ['comic' => $comic->id]);
     }
 
     /**
